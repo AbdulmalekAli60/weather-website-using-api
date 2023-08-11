@@ -15,30 +15,31 @@ let cities = [
     }
 ]
 
-for (city of cities) {
-    let content = `
-            <option>${city.arabicName}</option>
-            `
-    document.getElementById("city-select").innerHTML += content
-}
 
-document.getElementById("city-select").addEventListener("change", function () {
-    document.getElementById("city-name").innerHTML = this.value
+const citySelect = document.getElementById("city-select");
+const cityNameElement = document.getElementById("city-name");
 
-    let cityName = getCityName(this.value)
-    // console.log(cityName);
-    getTemperature(cityName)
+cities.forEach((city) => {
+    const option = document.createElement("option");
+    option.textContent = city.arabicName;
+    citySelect.appendChild(option);
+});
 
-})
+citySelect.addEventListener("change", function () {
+    cityNameElement.innerHTML = this.value;
+
+    const cityName = getCityName(this.value);
+    getTemperature(cityName);
+});
 
 function getCityName(name) {
-    let City = ""
+
     for (city of cities) {
         if (city.arabicName == name) {
-            City = city.englishName
+            return city.englishName
         }
     }
-    return City
+    return ""
 }
 
 function getTemperature(city = "Riyadh") {
