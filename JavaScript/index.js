@@ -61,3 +61,25 @@ function getTemperature(city = "Riyadh") {
         })
 }
 getTemperature()
+
+// fetch(`${baseUrl}?q=${city}&appid=${apiToken}&units=metric`)
+// .then(function (response) {
+//     if (response.ok) {
+//         return response.json();
+//     } else {
+//         throw new Error('Request failed');
+//     }
+// })
+// .then(function (data) {
+//     const temperature = Math.floor(data.main.temp);
+//     const maxTemp = data.main.temp_max;
+//     const minTemp = data.main.temp_min;
+
+//     document.getElementById("temperature").innerHTML = `C ${temperature} `;
+//     document.getElementById("max-temp").innerHTML = `C ${maxTemp} `;
+//     document.getElementById("min-temp").innerHTML = `C ${minTemp}  `;
+// })
+// .catch(function (error) {
+//     const errorMessage = error.message;
+//     console.log(errorMessage);
+// });
